@@ -1,0 +1,25 @@
+<h1>Привет, я могу содержать весь твой HTML-код!</h1>
+{% if (role) == "admin" %}
+<h3>Done with (role)</h3>
+{% endif %}
+{% if role == "admin" %}
+<h3>Done with role</h3>
+{% endif %}
+<h2>Hello {{name}}, welcome to the {{place}}</h2>
+
+<h3>Число А</h3>
+<li>С точностью 2 знака: {{ a|round(2) }}</li>
+<li>С точностью 1 знака: {{ a|round(1) }}</li>
+<li>С точностью 0 знаков: {{ a|round }}</li>
+<li>Целое число: {{a|round(0, 'floor')|int }}</li>
+
+<h3>Число B</h3>
+<li>С точностью 2 знака: {{ b|round(2) }}</li>
+<li>С точностью 1 знака: {{ b|round(1) }}</li>
+<li>С точностью 0 знаков: {{ b|round }}</li>
+<li>Целое число: {{ b|round|int }}</li>
+
+<h3>Ваша корзина</h3>
+<p>У вас {{ mycart|length }} покупок на сумму {{ mycart|sum(attribute='price') }}</p>
+
+<img src="{{ url_for('static', filename='images/001.png') }}">
