@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -22,16 +22,31 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/login/')
+# вывод формы
+@app.route("/login/")
 def render_login():
-    form = """
-      <form action="/auth/" method="post">     
+
+    form= """
+      <form action="/search/" method="post">     
         <input type="text" name="username">
         <input type="password" name="password">
         <input type="submit">
       </form>
     """
+
+    # отдаем форму пользователю
     return form
+
+# вывод результатов
+@app.route('/search/', methods=['POST'])
+def render_search():
+
+    # вытаскиваем данные, которые пришли в request
+    username = request.form.get("username")
+    password= request.form.get("password")
+
+    # отдаем результат пользователю
+    return f"Логин: {username} Пароль {password}"
 
 
 app.run()
