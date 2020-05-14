@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>WTForms_example</title>
+</head>
+<body>
+    <h1>WTForms examples</h1>
+    <!--<form action="/save/" method="POST"> - эта строка для разных представлений в forms_app.py-->
+    <form action="/form/" method="POST">
+        <h2>Форма заказа</h2>
+        {% for err in form.name.errors %}
+            <p class="error">{{ err }}</p>
+        {% endfor %}
+        {{ form.name }}
+        {{ form.phone }}
+        {% for err in form.mail.errors %}
+            <p class="error">{{ err }}</p>
+        {% endfor %}
+        {{ form.mail }}
+        <input type="submit">
+    </form>
+</body>
+</html>
